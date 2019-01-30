@@ -19,8 +19,8 @@ class StarWarsState extends State<StarWarsData> {
   List data;
 
   Future<String> getSWData() async {
-    var res = await http
-        .get(Uri.encodeFull(url), headers: {"Accept": "application/json"});
+    var res =
+        await http.get(Uri.parse(url), headers: {"Accept": "application/json"});
 
     setState(() {
       var resBody = json.decode(res.body);
@@ -40,7 +40,7 @@ class StarWarsState extends State<StarWarsData> {
       body: ListView.builder(
         itemCount: data == null ? 0 : data.length,
         itemBuilder: (BuildContext context, int index) {
-          return new Container(
+          return Container(
             child: Center(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
